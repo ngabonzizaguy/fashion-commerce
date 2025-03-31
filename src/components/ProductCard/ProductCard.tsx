@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     left: theme.spacing.sm,
     backgroundColor: theme.colors.black,
     paddingHorizontal: theme.spacing.sm,
-    paddingVertical: theme.spacing.xxs,
+    paddingVertical: theme.spacing.xs,
     borderRadius: theme.borderRadius.sm,
   },
   newText: {
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   brand: {
     fontSize: theme.typography.fontSize.sm,
     color: theme.colors.gray600,
-    marginBottom: theme.spacing.xxs,
+    marginBottom: theme.spacing.xs,
   },
   name: {
     fontSize: theme.typography.fontSize.md,
