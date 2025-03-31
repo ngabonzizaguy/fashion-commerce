@@ -42,7 +42,7 @@ const featuredProducts: Product[] = [
     images: ['https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60'],
     rating: 4.5,
     inStock: true,
-    isFeatured: true,
+    isFavorite: false
   },
   {
     id: '2',
@@ -56,7 +56,7 @@ const featuredProducts: Product[] = [
     images: ['https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVuaW0lMjBqYWNrZXR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'],
     rating: 4.7,
     inStock: true,
-    isFeatured: true,
+    isFavorite: false
   },
   {
     id: '3',
@@ -70,7 +70,7 @@ const featuredProducts: Product[] = [
     images: ['https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'],
     rating: 4.8,
     inStock: true,
-    isFeatured: true,
+    isFavorite: false
   },
   {
     id: '4',
@@ -84,7 +84,7 @@ const featuredProducts: Product[] = [
     images: ['https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dG90ZSUyMGJhZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60'],
     rating: 4.6,
     inStock: true,
-    isFeatured: true,
+    isFavorite: false
   },
 ];
 
@@ -92,7 +92,7 @@ const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const handleCategoryPress = (categoryId: string, categoryName: string) => {
-    navigation.navigate('ProductList', { categoryId, categoryName });
+    navigation.navigate('ProductList', { categoryId, title: categoryName });
   };
 
   const handleProductPress = (productId: string) => {
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   headerSubtitle: {
     fontSize: theme.typography.fontSize.md,
     color: theme.colors.gray600,
-    marginTop: theme.spacing.xxs,
+    marginTop: theme.spacing.xs,
   },
   searchButton: {
     width: 40,
