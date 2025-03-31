@@ -28,7 +28,7 @@ const MainTabNavigator = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-          let iconName: any;
+          let iconName: string = 'home';
 
           if (route.name === 'Home') {
             iconName = 'home';
@@ -40,7 +40,7 @@ const MainTabNavigator = () => {
             iconName = 'user';
           }
 
-          return <Feather name={iconName} size={size} color={color} />;
+          return <Feather name={iconName as any} size={size} color={color} />;
         },
         tabBarActiveTintColor: theme.colors.black,
         tabBarInactiveTintColor: theme.colors.gray500,
