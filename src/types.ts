@@ -1,10 +1,8 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
-
 // Navigation Types
 export type RootStackParamList = {
   Auth: undefined;
-  Main: NavigatorScreenParams<MainTabParamList>;
-  ProductList: { categoryId: string; categoryName: string };
+  Main: undefined;
+  ProductList: { categoryId?: string; title: string };
   ProductDetail: { productId: string };
   Search: undefined;
   Checkout: undefined;
@@ -32,8 +30,7 @@ export interface Product {
   images: string[];
   rating: number;
   inStock: boolean;
-  isNew?: boolean;
-  isFeatured?: boolean;
+  isFavorite?: boolean;
 }
 
 export interface Category {
@@ -47,56 +44,52 @@ export interface CartItem {
   productId: string;
   name: string;
   brand: string;
-  price: number;
-  discountPrice?: number;
   color: string;
   size: string;
-  image: string;
+  price: number;
   quantity: number;
+  image: string;
 }
 
 export interface Order {
   id: string;
-  userId: string;
+  date: string;
+  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
   items: CartItem[];
-  totalAmount: number;
+  subtotal: number;
+  shipping: number;
+  tax: number;
+  total: number;
+  trackingNumber?: string;
   shippingAddress: Address;
   paymentMethod: PaymentMethod;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  date: string;
-  trackingNumber?: string;
 }
 
 export interface Address {
   id: string;
-  fullName: string;
-  addressLine1: string;
-  addressLine2?: string;
+  name: string;
+  address: string;
   city: string;
-  state: string;
-  postalCode: string;
+  state?: string;
+  zipCode: string;
   country: string;
-  phone: string;
   isDefault: boolean;
 }
 
 export interface PaymentMethod {
   id: string;
-  type: 'credit_card' | 'paypal' | 'apple_pay' | 'google_pay';
-  cardNumber?: string;
-  cardHolderName?: string;
+  type: 'card' | 'paypal' | 'applepay';
+  lastFour?: string;
+  brand?: string;
   expiryDate?: string;
   isDefault: boolean;
 }
 
 export interface User {
   id: string;
+  name: string;
   email: string;
-  fullName: string;
-  phone?: string;
-  avatar?: string;
+  profileImage?: string;
   addresses: Address[];
   paymentMethods: PaymentMethod[];
-  favorites: string[];
-  orderHistory: string[];
 }
